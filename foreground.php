@@ -24,7 +24,7 @@ $wgExtensionCredits['skin'][] = array(
 		'Jamie Thingelstad',
 		'...'
 		),
-	'version' => '1.0.1'
+	'version' => '1.0.2'
 	'descriptionmsg' => 'foreground-desc'
 );
 
