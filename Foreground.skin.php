@@ -202,7 +202,17 @@ class foregroundTemplate extends BaseTemplate {
 					<?php if ( $this->data['isarticle'] ) { ?><h3 id="tagline"><?php $this->msg( 'tagline' ) ?></h3><?php } ?>
 					<h5 class="subtitle"><?php $this->html('subtitle') ?></h5>
 					<div class="clear_both"></div>
-					<?php $this->html('bodytext') ?>
+					<?php 
+					switch ($wgForegroundFeatures['useForegroundTabs']) {
+						case 'true':
+							echo $body;
+							ob_flush();
+							break;
+						default:
+							$this->html('bodytext'); 
+							break;
+					}
+					 ?>
 		    	<div class="group"><?php $this->html('catlinks'); ?></div>
 		    	<?php $this->html('dataAfterContent'); ?>
 		    </div>
