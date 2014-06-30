@@ -65,6 +65,23 @@ class foregroundTemplate extends BaseTemplate {
 				echo "<div id='navwrapper' class='". $wgForegroundFeatures['NavWrapperType']. "'>";
 				break;
 		}
+		switch ($wgForegroundFeatures['useForegroundTabs']) {
+			case 'true':
+			    ob_start();
+				$this->html('bodytext'); 
+				$out = ob_get_contents();
+				ob_end_clean();
+				$markers   = array("&lt;a", "&lt;/a", "&gt;");
+				$tags   = array("<a", "</a", ">");
+				$body = str_replace($markers, $tags, $out);
+				break;	
+			default:
+				break;
+		}
+				
+
+		
+
 ?>
 <!-- START FOREGROUNDTEMPLATE -->
 		<nav class="top-bar">
