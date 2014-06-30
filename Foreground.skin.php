@@ -19,6 +19,7 @@ class Skinforeground extends SkinTemplate {
 			'NavWrapperType' => 'divonly',
 			'showHelpUnderTools' => true,
 			'showRecentChangesUnderTools' => true,
+			'useForegroundTabs' => true,
 			'IeEdgeCode' => 1
 		);
 		foreach ($wgForegroundFeaturesDefaults as $fgOption => $fgOptionValue) {
