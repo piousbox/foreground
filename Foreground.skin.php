@@ -65,14 +65,21 @@ class foregroundTemplate extends BaseTemplate {
 				echo "<div id='navwrapper' class='". $wgForegroundFeatures['NavWrapperType']. "'>";
 				break;
 		}
-			        ob_start();
+		switch ($wgForegroundFeatures['useForegroundTabs']) {
+			case 'true':
+			    ob_start();
 				$this->html('bodytext'); 
 				$out = ob_get_contents();
 				ob_end_clean();
- 	    	                $remove1 = str_replace("&lt;a", "<a", $out);
- 	 	                $remove2 = str_replace("&lt;/a", "</a", $remove1);
- 	                        $remove3 = str_replace("&gt;", ">", $remove2);
- 	                        $newbody = $remove3;
+				$markers   = array("&lt;a", "&lt;/a", "&gt;");
+				$tags   = array("<a", "</a", ">");
+				$body = str_replace($markers, $tags, $out);
+				break;	
+			default:
+				break;
+		}
+				
+
 		
 
 ?>
@@ -194,10 +201,7 @@ class foregroundTemplate extends BaseTemplate {
 					<?php if ( $this->data['isarticle'] ) { ?><h3 id="tagline"><?php $this->msg( 'tagline' ) ?></h3><?php } ?>
 					<h5 class="subtitle"><?php $this->html('subtitle') ?></h5>
 					<div class="clear_both"></div>
-					<?php
-					echo $newbody;
-					ob_flush();
-				       	 ?>
+					<?php $this->html('bodytext') ?>
 		    	<div class="group"><?php $this->html('catlinks'); ?></div>
 		    	<?php $this->html('dataAfterContent'); ?>
 		    </div>
