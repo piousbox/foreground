@@ -65,7 +65,7 @@ $wgResourceModules['skins.foreground'] = array(
         'foreground/assets/scripts/foundation/foundation.alert.js',
         'foreground/assets/scripts/foundation/foundation.accordion.js',
         'foreground/assets/scripts/foundation/foundation.abide.js',
-        'foreground/assets/scripts/foreground.js',
+        'foreground/assets/scripts/foreground.js'
     ),
     'remoteBasePath' => &$GLOBALS['wgStylePath'],
     'localBasePath'  => &$GLOBALS['wgStyleDirectory']
