@@ -24,7 +24,7 @@ $wgExtensionCredits['skin'][] = array(
 		'Jamie Thingelstad',
 		'...'
 		),
-	'version' => '1.0.5',
+	'version' => '1.0.6',
 	'descriptionmsg' => 'foreground-desc'
 );
 
@@ -62,7 +62,7 @@ $wgResourceModules['skins.foreground'] = array(
         'foreground/assets/scripts/foundation/foundation.clearing.js',
         'foreground/assets/scripts/foundation/foundation.alerts.js',
         'foreground/assets/scripts/foundation/foundation.abide.js',
-        'foreground/assets/scripts/foreground.js',
+        'foreground/assets/scripts/foreground.js'
     ),
     'remoteBasePath' => &$GLOBALS['wgStylePath'],
     'localBasePath'  => &$GLOBALS['wgStyleDirectory']
