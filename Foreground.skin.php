@@ -71,12 +71,12 @@ class foregroundTemplate extends BaseTemplate {
 		<nav class="top-bar">
 			<ul class="title-area">
 				<li class="name">
-					<div class="title-container" style="margin: 0 5px;">
+					<h1 class="title-name">
 					<a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>">
 					<img alt="<?php echo $this->text('sitename'); ?>" src="<?php echo $this->text('logopath') ?>" style="max-width: 64px;height:auto; max-height:36px; display: inline-block; vertical-align:middle;">
-					<h1 style="display: inline-block; color: #fff;"><?php echo $wgForegroundFeatures['wikiName']; ?></h1>
+					<div class="title-name" style="display: inline-block;"><?php echo $wgForegroundFeatures['wikiName']; ?></div>
 					</a>
-					</div>
+					</h1>
 				</li>
 				<li class="toggle-topbar menu-icon">
 					<a href="#"><span><?php echo wfMessage( 'foreground-menutitle' )->text(); ?></span></a>
