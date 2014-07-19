@@ -71,12 +71,12 @@ class foregroundTemplate extends BaseTemplate {
 		<nav class="top-bar">
 			<ul class="title-area">
 				<li class="name">
-					<h1 class="title-name">
+					<div class="title-container" style="margin: 0 5px;">
 					<a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>">
 					<img alt="<?php echo $this->text('sitename'); ?>" src="<?php echo $this->text('logopath') ?>" style="max-width: 64px;height:auto; max-height:36px; display: inline-block; vertical-align:middle;">
-					<div class="title-name" style="display: inline-block;"><?php echo $wgForegroundFeatures['wikiName']; ?></div>
+					<h1 style="display: inline-block; color: #fff;"><?php echo $wgForegroundFeatures['wikiName']; ?></h1>
 					</a>
-					</h1>
+					</div>
 				</li>
 				<li class="toggle-topbar menu-icon">
 					<a href="#"><span><?php echo wfMessage( 'foreground-menutitle' )->text(); ?></span></a>
@@ -145,94 +145,73 @@ class foregroundTemplate extends BaseTemplate {
 			</ul>
 		</section>
 		</nav>
-			<?php if ($wgForegroundFeatures['NavWrapperType'] != '0') echo "</div>"; ?>
-			
+		<?php if ($wgForegroundFeatures['NavWrapperType'] != '0') echo "</div>"; ?>
+		
 		<div id="page-content">
-			<div class="row">
-					<div class="large-12 columns">
-					<!--[if lt IE 9]>
-					<div id="siteNotice" class="sitenotice panel radius"><?php echo $this->text('sitename') . ' '. wfMessage( 'foreground-browsermsg' )->text(); ?></div>
-					<![endif]-->
+		<div class="row">
+				<div class="large-12 columns">
+				<!--[if lt IE 9]>
+				<div id="siteNotice" class="sitenotice panel radius"><?php echo $this->text('sitename') . ' '. wfMessage( 'foreground-browsermsg' )->text(); ?></div>
+				<![endif]-->
 
-					<?php if ( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="sitenotice panel radius"><?php $this->html( 'sitenotice' ); ?></div><?php } ?>
-					<?php if ( $this->data['newtalk'] ) { ?><div id="usermessage" class="newtalk panel radius"><?php $this->html( 'newtalk' ); ?></div><?php } ?>
-					</div>
-			</div>
-
-			<div id="mw-js-message" style="display:none;"></div>
-
-			<div class="row">
-					<div id="p-cactions" class="large-12 columns">
-						<?php if ($wgUser->isLoggedIn() || $wgForegroundFeatures['showActionsForAnon']): ?>
-							<a href="#" data-dropdown="drop1" class="button dropdown small secondary radius"><i class="fa fa-cog"><span class="show-for-medium-up">&nbsp;<?php echo wfMessage( 'actions' )->text() ?></span></i></a>
-							<ul id="drop1" class="views large-12 columns f-dropdown">
-								<?php foreach( $this->data['content_actions'] as $key => $item ) { echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
-								<?php wfRunHooks( SkinTemplateToolboxEnd, array( &$this, true ) );  ?>
-							</ul>
-							<?php if ($wgUser->isLoggedIn()): ?>
-								<div id="echo-notifications"></div>
-							<?php endif; ?>
-						<?php endif;
-						$namespace = str_replace('_', ' ', $this->getSkin()->getTitle()->getNsText());
-						$displaytitle = $this->data['title'];
-						if (!empty($namespace)) {
-							$pagetitle = $this->getSkin()->getTitle();
-							$newtitle = str_replace($namespace.':', '', $pagetitle);
-							$displaytitle = str_replace($pagetitle, $newtitle, $displaytitle);
-						?><h4 class="namespace label"><?php print $namespace; ?></h4><?php } ?>
-						<h2 class="title"><?php print $displaytitle; ?></h2>
-						<?php if ( $this->data['isarticle'] ) { ?><h3 id="tagline"><?php $this->msg( 'tagline' ) ?></h3>
-							<div id="social">
-							<!-- AddThis Button BEGIN -->
-							<div class="addthis_toolbox addthis_default_style addthis_16x16_style">
-							<a class="addthis_button_twitter"></a>
-							<a class="addthis_button_facebook"></a>
-							<a class="addthis_button_google_plusone_share"></a>
-							<a class="addthis_button_linkedin"></a>
-							<a class="addthis_button_pinterest_share"></a>
-							<a class="addthis_button_email"></a>
-							<a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
-							</div>
-							<!-- moved to resource loader <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5378f70766e02197"></script> -->
-							<!-- AddThis Button END -->
-							</div>
-						<?php } ?>
-						<h5 class="subtitle"><?php $this->html('subtitle') ?></h5>
-						<div class="clear_both"></div>
-						<?php $this->html('bodytext') ?>
-					<div class="group"><?php $this->html('catlinks'); ?></div>
-					<?php $this->html('dataAfterContent'); ?>
+				<?php if ( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="sitenotice panel radius"><?php $this->html( 'sitenotice' ); ?></div><?php } ?>
+				<?php if ( $this->data['newtalk'] ) { ?><div id="usermessage" class="newtalk panel radius"><?php $this->html( 'newtalk' ); ?></div><?php } ?>
 				</div>
-			</div>
+		</div>
 
-			<footer class="row">
-				<div id="footer" class="large-12 columns">
-					<div id="footer-left class="class="large-8 small-12 columns">
-					<ul id="footer-left">
-						<?php foreach ( $this->getFooterLinks( "flat" ) as $key ) { ?>
-							<li id="footer-<?php echo $key ?>"><?php $this->html( $key ) ?></li>
-						<?php } ?>
-					</ul>
-					</div>
-					<div id="footer-right-icons" class="large-4 small-12 columns">
-						<ul id="footer-right-icons">
-							<?php foreach ( $this->getFooterIcons( "icononly" ) as $blockName => $footerIcons ) { ?>
-								<li class="<?php echo $blockName ?>"><?php foreach ( $footerIcons as $icon ) { ?>
-									<?php echo $this->getSkin()->makeFooterIcon( $icon ); ?>
-									<?php } ?>
-								</li>
-							<?php } ?>
+		<div id="mw-js-message" style="display:none;"></div>
+
+		<div class="row">
+				<div id="p-cactions" class="large-12 columns">
+					<?php if ($wgUser->isLoggedIn() || $wgForegroundFeatures['showActionsForAnon']): ?>
+						<a href="#" data-dropdown="drop1" class="button dropdown small secondary radius"><i class="fa fa-cog"><span class="show-for-medium-up">&nbsp;<?php echo wfMessage( 'actions' )->text() ?></span></i></a>
+						<ul id="drop1" class="views large-12 columns f-dropdown">
+							<?php foreach( $this->data['content_actions'] as $key => $item ) { echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
+							<?php wfRunHooks( SkinTemplateToolboxEnd, array( &$this, true ) );  ?>
 						</ul>
-					</div>
-				</div>
-			</footer>
+						<?php if ($wgUser->isLoggedIn()): ?>
+							<div id="echo-notifications"></div>
+						<?php endif; ?>
+					<?php endif;
+					$namespace = str_replace('_', ' ', $this->getSkin()->getTitle()->getNsText());
+					$displaytitle = $this->data['title'];
+					if (!empty($namespace)) {
+						$pagetitle = $this->getSkin()->getTitle();
+						$newtitle = str_replace($namespace.':', '', $pagetitle);
+						$displaytitle = str_replace($pagetitle, $newtitle, $displaytitle);
+					?><h4 class="namespace label"><?php print $namespace; ?></h4><?php } ?>
+					<h2 class="title"><?php print $displaytitle; ?></h2>
+					<?php if ( $this->data['isarticle'] ) { ?><h3 id="tagline"><?php $this->msg( 'tagline' ) ?></h3><?php } ?>
+					<h5 class="subtitle"><?php $this->html('subtitle') ?></h5>
+					<div class="clear_both"></div>
+					<?php $this->html('bodytext') ?>
+		    	<div class="group"><?php $this->html('catlinks'); ?></div>
+		    	<?php $this->html('dataAfterContent'); ?>
+		    </div>
+		</div>
+
+		<footer class="row">
+
+		<ul class="large-12 columns">
+		<?php foreach ( $this->getFooterLinks( "flat" ) as $key ) { ?>
+			<li id="footer-<?php echo $key ?>"><?php $this->html( $key ) ?></li>
+		<?php } ?>
+		</ul>
+		<ul> <?php foreach ( $this->getFooterIcons( "nocopyright" ) as $blockName => $footerIcons ) { ?>
+	<li class="<?php echo $blockName ?>"><?php foreach ( $footerIcons as $icon ) { ?>
+	    <?php echo $this->getSkin()->makeFooterIcon( $icon, 'withoutImage' ); ?>
+ 						<?php } ?>
+        </li>
+				<?php } ?>
+		</ul>
+		</footer>
 
 		</div>
-			
-			<?php $this->printTrail(); ?>
+		
+		<?php $this->printTrail(); ?>
 
-			</body>
-			</html>
+		</body>
+		</html>
 
 <?php
 		wfRestoreWarnings();
