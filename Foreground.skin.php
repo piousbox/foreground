@@ -119,6 +119,24 @@ class foregroundTemplate extends BaseTemplate {
 			</ul>
 
 			<ul id="top-bar-right" class="right">
+<!-- _vp_ 20160106 begin -->
+<li>
+              <a href="http://wasya.co/#services" class="services">Services</a>
+            </li>
+            <li class="has-dropdown not-click">
+              <a href="javascript:void(0);">Knowledge Base</a>
+              <ul class="dropdown"><li class="title back js-generated"><h5><a href="#">Back</a></h5></li>
+                <li><a href="http://blog.wasya.co">Blog</a></li>
+                <li><a href="http://wiki.computationalartscorp.com">Wiki</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="http://wasya.co/#about" class="about">About</a>
+            </li>
+            <li>
+              <a href="mailto:admin@wasya.co?subject=Potential Work Opportunity">Contact</a>
+            </li>
+<!-- _vp_ 20160106 end -->
 				<li class="has-form">
 					<form action="<?php $this->text( 'wgScript' ); ?>" id="searchform" class="mw-search">
 						<div class="row collapse">
