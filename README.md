@@ -1,5 +1,7 @@
 # MediaWiki Foreground Skin
 
+Modified for wasya.co - the header navigation is custom!
+
 [MediaWiki](http://www.mediawiki.org) skin that focuses on putting your content in the *foreground*. Supports responsive layouts and has classes predefined for [Semantic MediaWiki](http://semantic-mediawiki.org/wiki/Semantic_MediaWiki). Built on the [Zurb Foundation](http://foundation.zurb.com) CSS framework.
 
 [![Build Status](https://travis-ci.org/thingles/foreground.svg?branch=develop)](https://travis-ci.org/thingles/foreground) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/thingles/foreground/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/thingles/foreground/?branch=develop)
